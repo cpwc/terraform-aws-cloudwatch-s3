@@ -44,19 +44,19 @@ resource "aws_s3_bucket_logging" "cloudwatch_bin" {
   target_prefix = "${aws_s3_bucket.cloudwatch_bin.bucket}/"
 }
 
-moved {
-  from = aws_s3_bucket_versioning.log_bucket
-  to   = aws_s3_bucket_versioning.cloudwatch_bin
-}
+# moved {
+#   from = aws_s3_bucket_versioning.log_bucket
+#   to   = aws_s3_bucket_versioning.cloudwatch_bin
+# }
 
-resource "aws_s3_bucket_versioning" "cloudwatch_bin" {
-  bucket = aws_s3_bucket.cloudwatch_bin.bucket
+# resource "aws_s3_bucket_versioning" "cloudwatch_bin" {
+#   bucket = aws_s3_bucket.cloudwatch_bin.bucket
 
-  versioning_configuration {
-    status     = "Disabled"
-    mfa_delete = var.log_bucket_mfa_delete
-  }
-}
+#   versioning_configuration {
+#     status     = "Disabled"
+#     mfa_delete = var.log_bucket_mfa_delete
+#   }
+# }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
   bucket = aws_s3_bucket.cloudwatch_bin.id
