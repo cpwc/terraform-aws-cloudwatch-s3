@@ -1,3 +1,8 @@
+moved {
+  from = aws_s3_bucket_policy.log_bucket_policy
+  to   = aws_s3_bucket_policy.cloudwatch_bin_bucket_policy
+}
+
 resource "aws_s3_bucket_policy" "cloudwatch_bin_bucket_policy" {
   bucket = aws_s3_bucket.cloudwatch_bin.id
 
